@@ -1,0 +1,48 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    // "type": "small",
+    "padding": { "left": 2, "top": 1 }
+  },
+  "modules": [
+    "title",
+
+    "separator",
+
+    "os",
+    "kernel",
+    "packages",
+
+    "separator",
+
+    "shell",
+    // {
+    //     "type": "display",
+    //     "key": "Display",
+    //     "format": "{width} x {height}"
+    // },
+    "wm",
+
+    "separator",
+
+    {
+        "type": "cpu",
+        "format": "{vendor} @ {freq-base}"
+    },
+    {
+        "type": "gpu",
+        "format": "{vendor} {type}"
+        
+    },
+    {
+        "type": "memory",
+        "format": "{used} / 32.00 GiB" // {total}" this doesn't work because of integrated graphics taking ram
+    },
+    {
+        "type": "disk",
+        "format": "{size-used} / {size-total} - {filesystem}"
+    },
+    "break",
+    "colors"
+  ]
+}
