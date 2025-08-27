@@ -1,23 +1,29 @@
 {
 "layer": "top",
 "position": "top",
-"height": 37,
+"height": 52,
 "spacing": 0,
 "margin-bottom": 0,
 "margin-top": 5,
 "margin-left": 15,
 "margin-right": 5,
 
-"modules-left": ["custom/power", "custom/reboot", "custom/sleep", "cpu","memory","idle_inhibitor"],
+"modules-left": ["custom/power", "cpu","memory","idle_inhibitor"],
 "modules-center": ["hyprland/workspaces"],
 "modules-right":  ["pulseaudio","network", "battery","clock", "tray"],
 
 "custom/power": {
     "format": "  ",
-    "on-click": "loginctl poweroff",
-    "tooltip": true,
-    "tooltip-format": "Power"
+    "menu": "on-click",
+	"menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+        "shutdown" : "loginctl poweroff",
+        "reboot" : "loginctl reboot",
+        "suspend" : "loginctl suspend-then-hibernate"
+    },
+	"tooltip": false
 },
+/*
 "custom/reboot": {
     "format": "  ",
     "on-click": "loginctl reboot",
@@ -30,6 +36,7 @@
     "tooltip": true,
     "tooltip-format": "Sleep"
 },
+*/
 "tray": {
     "icon-size": 25,
     "spacing": 10,
@@ -42,7 +49,8 @@
 	"format-ethernet": "{ifname} ",
 	/* "format-disconnected": "", //An empty format will hide the module. */
 	"format-disconnected": "",
-    "interval": 1
+    "interval": 5,
+	"tooltip": false
 },
 "idle_inhibitor": {
     "format": "{icon}",
@@ -69,12 +77,13 @@
 },
 "clock": {
     "locale": "C", 
-    "format": " {:%I:%M %p}",
-    "format-alt": " {:%a, %b %d}", // Icon: calendar-alt
+    "format": " {:%I:%M %p  %a, %b %d}",
+    // "format-alt": " {:%a, %b %d}", // Icon: calendar-alt
     "tooltip": false
 },
 "cpu": {
-    "format": "&#8239;{usage}%",
+    "interval": 5,
+    "format": " {usage:>2}%",
     "tooltip": false,
     "on-click": "alacritty -e 'btop'"
 },
@@ -84,7 +93,8 @@
     "max-length": 10,
     "tooltip": false,
     "warning": 70,
-    "critical": 90
+    "critical": 90,
+    "on-click": "alacritty -e 'btop'"
 },
 "pulseaudio": {
   // "scroll-step": 1, // %, can be a float

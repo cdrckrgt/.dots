@@ -35,21 +35,46 @@ window#waybar {
 }
 
 #tray,
-#mpd,
-#custom-weather,
+#custom-power,
 #cpu, 
-#temperature, 
 #memory,
-#sway-mode,
-#backlight, 
 #pulseaudio, 
-#custom-vpn,
-#disk,
-#custom-recorder,
-#custom-audiorec,
 #battery, 
 #clock, 
 #idle_inhibitor,
 #network {
-	padding: 0 10px;
+  border-radius: 15;
+  margin: 6px 3px;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  /* color: @text; */
+  color: #e0def4;
+}
+#clock {
+  background-color: #56949f;
+}
+#custom-power{
+  background-color: @love;
+}
+#battery{
+  /* background-color: #d7827e; */
+  background-color: @love;
+}
+#pulseaudio{
+  background-color: #56949f;
+}
+#memory{
+  background-color: #56949f;
+}
+#cpu{
+  background-color: #56949f;
+}
+#network{
+  background-color: #ea9d34;
+}
+#idle_inhibitor{
+  background-color: #ea9d34;
+}
+#window{
+  background-color: @love;
 }
